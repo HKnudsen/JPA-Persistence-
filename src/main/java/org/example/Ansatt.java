@@ -1,8 +1,6 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -10,6 +8,7 @@ import java.time.LocalDate;
 @Table(schema = "jpapersistoblig")
 public class Ansatt {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ansatt_id;
     private String brukernavn;
     private String fornavn;
@@ -17,8 +16,21 @@ public class Ansatt {
     private LocalDate ansettelse_dato;
     private String stilling;
     private int monedslonn;
+    @ManyToOne
+    @JoinColumn(name = "avdeling")
+    private Avdeling avdeling;
 
     public Ansatt() {}
+
+    public Ansatt(String brukernavn, String fornavn, String etternavn, String dato, String stilling, int lønn) {
+        this.brukernavn         = brukernavn;
+        this.fornavn            = fornavn;
+        this.etternavn          = etternavn;
+        this.ansettelse_dato    = LocalDate.parse(dato);
+        this.stilling           = stilling;
+        this.monedslonn         = lønn;
+
+    }
 
     public void setAnsatt_id(int ansatt_id) {
         this.ansatt_id = ansatt_id;
