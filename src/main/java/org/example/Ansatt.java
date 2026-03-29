@@ -88,16 +88,19 @@ public class Ansatt {
         return monedslonn;
     }
 
+    public Avdeling getAvdeling() {
+        return avdeling;
+    }
+
+    public void setAvdeling(Avdeling avdeling) {
+        this.avdeling = avdeling;
+    }
+
+
+
     @Override
     public String toString() {
-        return "Ansatt{" +
-                "ansatt_id=" + ansatt_id +
-                ", brukernavn='" + brukernavn + '\'' +
-                ", fornavn='" + fornavn + '\'' +
-                ", etternavn='" + etternavn + '\'' +
-                ", ansettelse_dato=" + ansettelse_dato +
-                ", stilling='" + stilling + '\'' +
-                ", monedslonn=" + monedslonn +
-                '}';
+        return ansatt_id + " | " + brukernavn + " | " + fornavn +
+                " " + etternavn + " | " + stilling + " | " + monedslonn + " | ";
     }
 }
